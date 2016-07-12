@@ -172,25 +172,25 @@
               <a href="../listAll.do">
               <span class="glyphicons glyphicons-notes-2"></span>
                 <i class="fa fa-edit"></i> <span>My page</span>
-                <small class="label pull-right bg-yellow">1</small>
+                <small class="label pull-right bg-yellow">new</small>
               </a>
             </li>
            <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
                 <span>포트폴리오</span>
-                <span class="label label-primary pull-right">3</span>
+                <span class="label label-primary pull-right">준비중</span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> 포트폴리오A</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> 포트폴리오B</a></li>
-                <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> 포트폴리오C</a></li>
-                <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> 새로만들기</a></li>
+                <li><a><i class="fa fa-circle-o"></i> 포트폴리오A</a></li>
+                <li><a><i class="fa fa-circle-o"></i> 포트폴리오B</a></li>
+                <li><a><i class="fa fa-circle-o"></i> 포트폴리오C</a></li>
+                <li><a><i class="fa fa-circle-o"></i> 새로만들기</a></li>
               </ul>
             </li>
               <li>
-              <a href="getProjectEditor.do">
-                <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">new</small>
+              <a >
+                <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">준비중</small>
               </a>
             </li>
             
@@ -201,8 +201,8 @@
                 	<i class="fa fa-dashboard"></i> <span>커뮤니티</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
               <ul class="treeview-menu">
-              	<li><a href="/freeboard.do"><i class="fa fa-circle-o"></i>자유게시판</a></li>
-                <li><a href="/noticeboard.do"><i class="fa fa-circle-o"></i>공지사항</a></li>
+              	<li><a href="/freeboard.do"><i class="fa fa-circle-o"></i>자유게시판<small class="label pull-right bg-red">new</small></a></li>
+                <li><a href="/noticeboard.do"><i class="fa fa-circle-o"></i>공지사항<small class="label pull-right bg-purple">new</small></a></li>
               </ul>
             </li>
         </ul>
