@@ -33,7 +33,7 @@
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Writer</label>
-					<input type="text" name='userId' class="form-control" value="${noticepost.userId}" readonly="readonly">
+					<input type="text" name='userId' class="form-control" value="<%=session.getAttribute("PostUserName")%>" readonly="readonly">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">Content</label>
@@ -44,11 +44,13 @@
 					<input type="text" name='nTags' class="form-control" value="${noticepost.nTags}" readonly="readonly">
 				</div>
 			</div>
+			<%	if(session.getAttribute("uid") == session.getAttribute("PostUserId")){ %>
 			<div class="box-footer">
 				<button id="ModifyPost" type="submit" class="btn btn-warning">Modify</button>
 				<button id="RemovePost" type="submit" class="btn btn-danger">REMOVE</button>
 				<a href="/noticeboard.do"><button id="listAll" class="btn btn-primary">LIST ALL</button></a>
 			</div>
+			<% } %>
 		</div>
 	</div>
 	<div class = "box box-success" >
@@ -58,12 +60,32 @@
 		<form class="box-body" role="addcomt">
 			<input type="hidden" name="nPostId" id="nPostId" value="${noticepost.nPostId}">
 			<label for="exampleInputEmail1">Writer</label>
-			<input class="form-control" type="text" placeholder="USER ID" name="userId" id="userId">
+			<c:set var="varUid" value="${uid}" />
+			<c:choose>
+			    <c:when test="${empty varUid}">
+			       <input class="form-control" type="text" value="로그인해주세요" readonly="readonly">
+			    </c:when>
+			    <c:otherwise>
+			        <input class="form-control" type="text" placeholder="USER ID" name="userId" id="userId" value="<%=session.getAttribute("nickname")%>" readonly="readonly">
+			    </c:otherwise>
+			</c:choose>
 			<label for="exampleInputEmail1">Comment Text</label>
 			<input class="form-control" type="text" placeholder="COMMENT TEXT" name="nCommentContent" id="nCommentContent">
 		</form>
 		<div class="body-footer">
-			<button id="addcomment" class="btn btn-primary">ADD COMMENT</button>
+			<c:choose>
+			    <c:when test="${empty varUid}">
+			       <button onclick="ClickBeforeLogin()" class="btn btn-primary">ADD COMMENT</button>
+			       <script>
+						function ClickBeforeLogin() {
+						    alert("로그인 후 이용가능합니다.");
+						}
+					</script>
+			    </c:when>
+			    <c:otherwise>
+			        <button id="addcomment" class="btn btn-primary">ADD COMMENT</button>
+			    </c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<ul class="timeline">
@@ -76,19 +98,23 @@
 					<span class="time">
 					<i class="fa fa-clock-o"></i>${noticecomment.nCommentDate}
 					</span>
-					<h3 class="timeline-header"><strong>${noticecomment.nCommentId}</strong>- ${noticecomment.userId}</h3>
+					<h3 class="timeline-header"><strong>${noticecomment.nCommentId}</strong>- ${noticecomment.userNick}</h3>
 					<div class="timeline-body">
 						<p class = "nCommentContent_b" id="nCommentContent_b">${noticecomment.nCommentContent}</p>
 						<input class = "nCommentContent_m" type="text" id="nCommentContent_m" value="${noticecomment.nCommentContent}" style="display: none;">
 						<input type="hidden" name="nCommentId" id="nCommentId" value="${noticecomment.nCommentId}">
 						<input type="hidden" name="nPostId" id="nPostId" value="${noticepost.nPostId}">
 					</div>
-					<div class="timeline-footer">
-						<input id="modifyCbtn" type="button" class="btn btn-primary btn-xs modifyCbtn" value="Modify">
-						<input id="removeCbtn" type="button" class="btn btn-danger btn-xs removeCbtn" value="Delete">
-						<input id="saveCbtn" type="button" class="btn btn-primary btn-xs saveCbtn" value="Save" style="display: none;">
-						<input id="cancelCbtn" type="button" class="btn btn-danger btn-xs cancelCbtn" value="Cancel" style="display: none;">
-					</div>
+					<c:set var="CommentUserId" value="${noticecomment.userId}"/>
+					
+					<c:if test="${CommentUserId eq varUid}">
+						<div class="timeline-footer">
+							<input id="modifyCbtn" type="button" class="btn btn-primary btn-xs modifyCbtn" value="Modify">
+							<input id="removeCbtn" type="button" class="btn btn-danger btn-xs removeCbtn" value="Delete">
+							<input id="saveCbtn" type="button" class="btn btn-primary btn-xs saveCbtn" value="Save" style="display: none;">
+							<input id="cancelCbtn" type="button" class="btn btn-danger btn-xs cancelCbtn" value="Cancel" style="display: none;">
+						</div>
+					</c:if>
 				</div>
 			</li>
 		</c:forEach>

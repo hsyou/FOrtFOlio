@@ -28,7 +28,20 @@
 		<div class="box-body pad table-responsive">
 			<table>
 		    	<tr>
-			    	<th><a href = "/noticeboard/write.jsp"><button class="btn bg-purple margin">Write</button></a></th>
+			    	<c:set var="varUid" value="${uid}" />
+					<c:choose>
+					    <c:when test="${empty varUid}">
+					       <th><button onclick="ClickBeforeLogin()" class="btn bg-purple margin">Write</button></th>
+					       <script>
+							function ClickBeforeLogin() {
+							    alert("로그인 후 이용가능합니다.");
+							}
+							</script>
+					    </c:when>
+					    <c:otherwise>
+					        <th><a href = "/noticeboard/write.jsp"><button class="btn bg-purple margin">Write</button></a></th>
+					    </c:otherwise>
+					</c:choose>	
 			    	<th style="width: 820px"></th>
 				    <th><div class="btn-group">
 				    	<button type="button" class="btn bg-purple">recent</button>

@@ -28,7 +28,7 @@
 	        <h3 class="box-title">Chat</h3>
 	        <div class="box-tools pull-right" data-toggle="tooltip" title="Send">
 	          <div class="btn-group" data-toggle="btn-toggle" >
-	            <button type="button" class="btn btn-warning btn-sm">메세지 보내기</button>
+	            <a href="/message/messageWrite.jsp"><button type="button" class="btn btn-warning btn-sm">메세지 보내기</button></a>
 	          </div>
 	          </br>
 	        </div>

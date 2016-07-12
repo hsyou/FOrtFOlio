@@ -11,7 +11,7 @@ import org.fofo.common.JDBCUtil;
 
 public class NoticeCommentDAO {
 
-	private static String addCommentSQL = "insert into noticecomment (nPostId, boardID, userID, nCommentContent) values(?, 1, ?, ?)";
+	private static String addCommentSQL = "insert into noticecomment (nPostId, boardID, userID, nCommentContent, userNick) values(?, 1, ?, ?, ?)";
 	private static String listCommentSQL = "select * from noticecomment where nPostId = ? order by nCommentDate desc";
 	private static String getBoardSQL = "select * from noticecomment where nCommentId = ?";
 	private static String countCommentSQL = "update noticepost set nCommentNum = nCommentNum + 1 where nPostId = ?";
@@ -87,7 +87,7 @@ public class NoticeCommentDAO {
 //				noticepost.setnPostTitle(rst.getString("nPostTitle"));
 //				noticepost.setnPostContent(rst.getString("nPostContent"));
 //				noticepost.setfTags(rst.getString("fTags"));
-				//System.out.println("±Û Á¤º¸ : " + noticepost);
+				//System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + noticepost);
 			}
 		}catch(SQLException e){
 			System.out.println("list error : " + e);
@@ -113,6 +113,7 @@ public class NoticeCommentDAO {
 				noticecomment.setnPostId(rst.getInt("nPostId"));
 				noticecomment.setBoardId(rst.getInt("BoardId"));
 				noticecomment.setUserId(rst.getInt("userId"));
+				noticecomment.setUserNick(rst.getString("userNick"));
 				noticecomment.setuProfileImg(rst.getString("uProfileImg"));
 				noticecomment.setnCommentDate(rst.getString("nCommentDate"));
 				noticecomment.setnCommentContent(rst.getString("nCommentContent"));
@@ -124,7 +125,7 @@ public class NoticeCommentDAO {
 		}finally{
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		//System.out.println("¸®½ºÆ®Á¤º¸ : " + list);
+		//System.out.println("ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ : " + list);
 		return clist;
 	}
 	
@@ -143,6 +144,7 @@ public class NoticeCommentDAO {
 			stmt.setInt(1, noticecomment.getnPostId());
 			stmt.setInt(2, noticecomment.getUserId());
 			stmt.setString(3, noticecomment.getnCommentContent());
+			stmt.setString(4, noticecomment.getUserNick());
 			int cnt = stmt.executeUpdate();
 			if(cnt == 1){
 				System.out.println("addComment success");

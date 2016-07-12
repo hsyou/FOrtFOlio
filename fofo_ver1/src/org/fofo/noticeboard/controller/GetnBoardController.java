@@ -7,12 +7,14 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.fofo.board.dao.NoticeBoardDAO;
 import org.fofo.board.dao.NoticeCommentDAO;
 import org.fofo.board.vo.NoticeComment;
 import org.fofo.board.vo.NoticePost;
 import org.fofo.common.Controller;
+import org.fofo.member.dao.MemberDAOImpl;
 
 public class GetnBoardController implements Controller {
 
@@ -34,6 +36,21 @@ public class GetnBoardController implements Controller {
 		
 		request.setAttribute("clist", clist);
 		System.out.println(clist);
+		
+		MemberDAOImpl mdao = new MemberDAOImpl();
+		HttpSession session = request.getSession();
+		String postUserName = "";
+		try {
+			 postUserName = mdao.getNick(noticepost.getUserId());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("PostUserName", postUserName);
+		session.setAttribute("PostUserId", noticepost.getUserId());
 		
 		request.setAttribute("noticepost", noticepost);
 		

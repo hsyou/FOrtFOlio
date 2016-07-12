@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.fofo.board.dao.NoticeBoardDAO;
 import org.fofo.board.dao.NoticeCommentDAO;
@@ -22,8 +23,10 @@ public class AddnCommentController implements Controller {
 		NoticeComment noticecomment = new NoticeComment();
 		
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		noticecomment.setUserId(Integer.parseInt(session.getAttribute("uid").toString()));
+		noticecomment.setUserNick((session.getAttribute("nickname").toString()));
 		noticecomment.setnPostId(Integer.parseInt(request.getParameter("nPostId")));
-		noticecomment.setUserId(Integer.parseInt(request.getParameter("userId")));
 		noticecomment.setnCommentContent(request.getParameter("nCommentContent"));
 		
 		dao.doAddComment(noticecomment);

@@ -10,6 +10,7 @@ public class NoticeComment implements Serializable {
 	private int nPostId;
 	private int boardId;
 	private int userId;
+	private String userNick;
 	private String uProfileImg;
 	private String nCommentDate;
 	private String nCommentContent;
@@ -49,6 +50,14 @@ public class NoticeComment implements Serializable {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
 	}
 
 	public String getuProfileImg() {

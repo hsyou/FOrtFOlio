@@ -50,6 +50,7 @@
 			<div class="box-footer">
 				<button id="ModifyPost" type="submit" class="btn btn-warning">Modify</button>
 				<button id="RemovePost" type="submit" class="btn btn-danger">REMOVE</button>
+				<a href="/freeboard.do"><button id="listAll" class="btn btn-primary">LIST ALL</button></a>
 			</div>
 			<% } %>
 		</div>
