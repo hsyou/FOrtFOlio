@@ -16,6 +16,8 @@ public interface MemberDAO {
 	public void doLeave(Member vo) throws Exception;
 	
 	public Member listAll(Member vo) throws Exception;
+	
+	public String getNick(int userId) throws Exception;
 
 	public int doCreateResume(Member vo) throws Exception;
 

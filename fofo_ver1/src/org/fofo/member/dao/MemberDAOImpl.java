@@ -17,6 +17,7 @@ public class MemberDAOImpl implements MemberDAO{
 	private static String doJoinSQL = "INSERT INTO user(nickname, email, pw) VALUES(?, ?, ?)";
 	private static String createResumeSQL="INSERT INTO resume(userId) VALUES(?)";
 	private static String doGetUserSQL = "SELECT * FROM user WHERE email = ?";
+	private static String doGetNicknameSQL = "SELECT nickname FROM user WHERE userId = ?";
 	private static String doGetResumeSQL="SELECT * FROM resume WHERE userId = ?";
 
 	
@@ -217,6 +218,38 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		
 		return vo;
+	}
+	
+	@Override
+	public String getNick(int userId) throws Exception {
+		// TODO Auto-generated method stub\
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet cnt=null;
+		System.out.println("listAll Member");
+		String Nickname = "";
+		try{
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(doGetNicknameSQL);
+			stmt.setInt(1, userId);
+			cnt = stmt.executeQuery();	
+			
+			if(cnt.next()){
+				
+				Nickname = cnt.getString("nickname");
+				//겟 리스트
+				//스쿨,경력 ... 리스트 받아
+			}
+			
+			
+		}catch(SQLException e){
+			System.out.println("SQLException : MemberDAO - listAll");
+			e.printStackTrace();
+		}finally{
+			JDBCUtil.close(stmt, conn);
+		}
+		
+		return Nickname;
 	}
 	
 	@Override

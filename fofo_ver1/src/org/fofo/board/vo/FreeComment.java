@@ -10,6 +10,7 @@ public class FreeComment implements Serializable {
 	private int fPostId;
 	private int boardId;
 	private int userId;
+	private String userNick;
 	private String uProfileImg;
 	private String fcommentDate;
 	private String fCommentContent;
@@ -21,6 +22,14 @@ public class FreeComment implements Serializable {
 
 	public int getfCommentId() {
 		return fCommentId;
+	}
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
 	}
 
 	public void setfCommentId(int fCommentId) {
@@ -86,7 +95,8 @@ public class FreeComment implements Serializable {
 	@Override
 	public String toString() {
 		return "FreeComment [fCommentId=" + fCommentId + ", fPostId=" + fPostId + ", boardId=" + boardId + ", userId="
-				+ userId + ", uProfileImg=" + uProfileImg + ", fcommentDate=" + fcommentDate + ", fCommentContent="
-				+ fCommentContent + ", fCLikeNum=" + fCLikeNum + "]";
+				+ userId + ", userNick=" + userNick + ", uProfileImg=" + uProfileImg + ", fcommentDate=" + fcommentDate
+				+ ", fCommentContent=" + fCommentContent + ", fCLikeNum=" + fCLikeNum + "]";
 	}
+
 }

@@ -32,7 +32,7 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1>">Writer</label>
-				<input name="writer" class="form-control" value="${freepost.userId}" readonly="readonly">
+				<input name="writer" class="form-control" value="<%=session.getAttribute("nickname")%>" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1>">Content</label>

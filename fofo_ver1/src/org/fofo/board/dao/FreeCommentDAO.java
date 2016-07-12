@@ -12,7 +12,7 @@ import org.fofo.common.JDBCUtil;
 
 public class FreeCommentDAO {
 
-	private static String addCommentSQL = "insert into freecomment (fpostId, boardID, userID, fcommentContent) values(?, 1, ?, ?)";
+	private static String addCommentSQL = "insert into freecomment (fpostId, boardID, userID, fcommentContent, userNick) values(?, 1, ?, ?, ?)";
 	private static String listCommentSQL = "select * from freecomment where fPostId = ? order by fcommentDate desc";
 	private static String getBoardSQL = "select * from freecomment where fCommentId = ?";
 	private static String countCommentSQL = "update freepost set fCommentNum = fCommentNum + 1 where fPostId = ?";
@@ -88,7 +88,7 @@ public class FreeCommentDAO {
 //				freepost.setfPostTitle(rst.getString("fPostTitle"));
 //				freepost.setfPostContent(rst.getString("fPostContent"));
 //				freepost.setfTags(rst.getString("fTags"));
-				//System.out.println("±Û Á¤º¸ : " + freepost);
+				//System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + freepost);
 			}
 		}catch(SQLException e){
 			System.out.println("list error : " + e);
@@ -114,6 +114,7 @@ public class FreeCommentDAO {
 				freecomment.setfPostId(rst.getInt("fPostId"));
 				freecomment.setBoardId(rst.getInt("BoardId"));
 				freecomment.setUserId(rst.getInt("userId"));
+				freecomment.setUserNick(rst.getString("userNick"));
 				freecomment.setuProfileImg(rst.getString("uProfileImg"));
 				freecomment.setFcommentDate(rst.getString("fcommentDate"));
 				freecomment.setfCommentContent(rst.getString("fCommentContent"));
@@ -125,7 +126,7 @@ public class FreeCommentDAO {
 		}finally{
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		//System.out.println("¸®½ºÆ®Á¤º¸ : " + list);
+		//System.out.println("ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ : " + list);
 		return clist;
 	}
 	
@@ -144,6 +145,7 @@ public class FreeCommentDAO {
 			stmt.setInt(1, freecomment.getfPostId());
 			stmt.setInt(2, freecomment.getUserId());
 			stmt.setString(3, freecomment.getfCommentContent());
+			stmt.setString(4, freecomment.getUserNick());
 			int cnt = stmt.executeUpdate();
 			if(cnt == 1){
 				System.out.println("addComment success");

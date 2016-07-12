@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.fofo.board.dao.FreeBoardDAO;
 import org.fofo.board.vo.FreePost;
@@ -19,6 +20,8 @@ public class ModifyfBoardController implements Controller {
 		FreeBoardDAO dao = new FreeBoardDAO();
 		FreePost freepost = new FreePost();
 		
+		HttpSession session = request.getSession();
+		freepost.setUserId(Integer.parseInt(session.getAttribute("uid").toString()));
 		freepost.setfPostId(Integer.parseInt(request.getParameter("fpostid")));
 		freepost.setfPostTitle(request.getParameter("title"));
 		freepost.setfPostContent(request.getParameter("content"));

@@ -30,20 +30,20 @@ public class FreePost implements Serializable {
 		this.fPostId = fPostId;
 	}
 
-	public int getBoardId() {
-		return BoardId;
-	}
-
-	public void setBoardId(int boardId) {
-		BoardId = boardId;
-	}
-
 	public int getUserId() {
 		return UserId;
 	}
 
 	public void setUserId(int userId) {
 		UserId = userId;
+	}
+
+	public int getBoardId() {
+		return BoardId;
+	}
+
+	public void setBoardId(int boardId) {
+		BoardId = boardId;
 	}
 
 	public int getfHitNum() {
