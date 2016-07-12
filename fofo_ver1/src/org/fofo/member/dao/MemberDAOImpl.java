@@ -76,14 +76,12 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doGetUserSQL);
-			stmt.setString(1, vo.getuEmail());
-			System.out.println("에러찾기 email: "+vo.getuEmail());
+			stmt.setString(1, vo.getuEmail());;
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				userId=cnt.getInt("userId");
-				System.out.println("aa"+userId);
 			}else{
-				System.out.println("asd");
+				System.out.println("Create Resume error");
 			}
 			
 			

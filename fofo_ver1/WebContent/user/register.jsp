@@ -55,15 +55,13 @@
           </div>
          <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
             <label>
               <input type="checkbox" required> I agree to the <a href="#">terms</a>
             </label>
-          </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" onclick="return joinCheck()">Register</button>
         </div>
         <!-- /.col -->
       </div>
@@ -87,13 +85,6 @@
   </body>
   
   <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
      
       function joinCheck(){
 		var count=0;

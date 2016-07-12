@@ -37,7 +37,6 @@ public class ListAllController implements Controller{
 			rVo=dao.listResume(vo);
 			request.setAttribute("data", vo);
 			request.setAttribute("resume", rVo);
-			System.out.println(vo.getuEmail());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

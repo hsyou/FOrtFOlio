@@ -40,81 +40,67 @@
                	  <input type="hidden" name="from" value="profile">
 	                <div class="form-group">
 	                
-	                  <label for="exampleInputFile">Image</label>
-	                  <br>
-	                	<input type="image" name="image" src="data:image/png;base64,iVBORw0KGgoAAAANSU
-	                	hEUgAAAHkAAAB5CAMAAAAqJH57AAAAMFBMVEXJx8f////x8fHGxMT6+vrW1dXn5ubMysrQzs7b2tr09
-	                	PT39/fs7Ozq6enj4uLT0tLh5spbAAACjklEQVRoge2a247rIAxFIQ4BcuP//3ZCJh21PSHY7XYrHbHe+
-	                	rQEJuBLjWk0Go1GQx0i+rjSeJ9S3HAp5J8f87q1G3u704/z6vxH3OTXm/WPaQj64jTYU+akqiUTn5f7
-	                	Rz9oitNY8u7uoBbuVFzwoY5KalcRb6ioKdTF1joFs7mM8Y1J4fMqfE3PzPD9Zu31vt9gNc1Mse081sxe
-	                	MvqQETPKGXCkO765h4oFm20t9BKNArFdgWJJmK1dkGZBmLfvCmmeJOYJ+UWz7mwVs2zNyFdD8lFtuQnQL
-	                	Foz1CxaM3K3v3e2ZeYRaRbdJCNOLMgLMtA77Gv3tuytikhzkpihOWCQHG5sCig4YhNU/L0MkASBhh4w
-	                	I3gz0JUVf7vhhRWjeD42G17SMa9u7MnOEPMaW/FdA95LCc3+bmbHWjJebFiRxkd5h3G80Q2DA1pr4ln
-	                	Fm9WVRU96vc9KE1Bpr3cu71B8Q+qei/ONbgo9cvVaau51pni+B+2Jgi/st9Idck9hv7Va23ecVzq6x+s
-	                	wnz6X6lHO5tOeCbJ+LInDaZh7lWb+o7k0r1I3h1KDSm9k9Ev5pVx0zVd5oOaMbsvFLp7JXiHtvOErhYb
-	                	KRJbIu6Gehw3OQ+fwtM+6eeXNODjcED7ERdQDtHNM78vJxFmm3em7+Nb3TSa9oj1Y3KsLJ3Ki1t+/dPE
-	                	1d3zTmxnlbgrL+97MnGTqy8tKRi8rL6sVlARBH1TWYEWqwWJ22sDtiEjgxVo0d2XSs+pbUf+eC2fCgPue
-	                	HmDUe6Ab5Jl63eV1xFtCXlm0xsH+pZYgyiZTEqo1n2gaJ6HS9+b9Ieo1risvydRAyvWUQe+A1boKXzSzW
-	                	skaZhM6NfRr+0aj0Wg0/hN+APmaGv2nJYnFAAAAAElFTkSuQmCC" width="100">
-	                
-	                </div>
-	                
-					<input type="file" id="exampleInputFile">
-					<!-- 파일 업로드 -->
 	                		
 	                <ul class="list-group list-group-unbordered">
 		                <li class="list-group-item">
 		                  	
 						
-						  <label>Email</label>
+							<label>Email</label>
 							<br>
-								<p>${data.getuEmail()}</p>
-								
+								<p>${data.getuEmail()}</p><br>
+							
 							<label>Full name</label>
 							<br>
-			                  	<p>${resume.getName()}</p>
-			                  
-								
+							${resume.getName()}<a href="#" data-toggle="popover"  data-content='<form action="../editProfile.do?formName=fullName" method="post"><input type="text" class="form-control" value="${resume.getName()}" name="fullName">  <button type="submit" class="btn btn-primary popEdit">edit</button></form>'  data-html="true">    수정</a>
+		                    <br><br>
+			                
 			                <label>English Name</label>
 							<br>
-								<p>${resume.getEngName()}</p>
-								
+							${resume.getEngName()}<a href="#" data-toggle="popover"  data-content='<form action="../editProfile.do?formName=engName" method="post"><input type="text" class="form-control" value="${resume.getEngName()}" name="engName">  <button type="submit" class="btn btn-primary popEdit">edit</button></form>'  data-html="true">    수정</a>
+							<br><br>
+														
 							<label>Nickname</label>
 							<br>
-								<p>${data.getuNickname()}</p>
+							${data.getuNickname()}<a href="#" data-toggle="popover"  data-content='<form action="../editProfile.do?formName=nickName" method="post"><input type="text" class="form-control" value="${data.getuNickname()}" name="nickName">  <button type="submit" class="btn btn-primary popEdit">edit</button></form>'  data-html="true">    수정</a>
+							<br><br>
 								
 			                <label>Date of birth</label>
 							<br>
-								<p>${resume.getBirth()}</p>
-		                
+							${resume.getBirth()}<a href="#" data-toggle="popover"  data-content='<form action="../editProfile.do?formName=birth" method="post"><input type="text" class="form-control" value="${resume.getBirth()}" name="birth">  <button type="submit" class="btn btn-primary popEdit">edit</button></form>'  data-html="true">    수정</a>
+							<br><br>
 		                   
 		                
 		               </li>
-		               <h1>아직 구현안했음</h1>
+		              
+
 		                 <li class="list-group-item">
 		                 <label>학교</label>
 		                 	<p>${resume.getSchool()}</p>
+		                 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#school">Edit</button>
+
 		                 </li>
 		                  <li class="list-group-item">
 		                 <label>경력</label>
 		                 	<p>${resume.getCareer()}</p>
+		                 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#career">Edit</button>
 		                 </li>
 		                  <li class="list-group-item">
 		                 <label>스킬</label>
 		                 	<p>${resume.getSkill()}</p>
+		                 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill">Edit</button>
 		                 </li>
 		                   <li class="list-group-item">
 		                 <label>수상 내역</label>
 		                 	<p>${resume.getAward()}</p>
+		                 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#award">Edit</button>
 		                 </li>
 		                   <li class="list-group-item">
 		                 <label>구사 언어</label>
 		                 	<p>${resume.getLanguage()}</p>
+		                 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#language">Edit</button>
 		                 </li>
               		</ul>
-	                <div class="col-xs-4">
-          			    <button type="submit" class="btn btn-primary btn-block btn-flat">Edit</button>
-         			</div><!-- /.col -->
+	                
 	                
                 </div>
                 <!-- box-body -->
@@ -126,7 +112,122 @@
           </div>
           <!-- right column -->
          <!-- /.right column -->
-     
+     <!-- Modal -->
+  <div class="modal fade" id="school" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form action="../editProfile.do?formName=school" method="post">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">학교</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" name="school" rows="3">${resume.getSchool()}</textarea>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  
+      <!-- Modal -->
+  <div class="modal fade" id="skill" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form action="../editProfile.do?formName=skill" method="post">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">스킬</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" name="skill" rows="3">${resume.getSkill()}</textarea>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+      <!-- Modal -->
+  <div class="modal fade" id="career" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form action="../editProfile.do?formName=career" method="post">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">경력</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" name="career" rows="3">${resume.getCareer()}</textarea>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+      <!-- Modal -->
+  <div class="modal fade" id="award" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form action="../editProfile.do?formName=award" method="post">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">수상</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" name="award" rows="3">${resume.getAward()}</textarea>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+      <!-- Modal -->
+  <div class="modal fade" id="language" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form action="../editProfile.do?formName=language" method="post">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">언어</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" name="language" rows="3">${resume.getLanguage()}</textarea>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
      
     </section>
     <!-- /.content -->
@@ -134,7 +235,10 @@
   <!-- /.content-wrapper -->
 	
     <script>
-    
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover().focus();
+    });
+        
       $(function () {
         $('input').iCheck({
           checkboxClass: 'icheckbox_square-blue',
@@ -143,11 +247,11 @@
         });
       });
       
-      $(function () {
+  /*     $(function () {
         //Datemask dd/mm/yyyy
         $("[data-mask]").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});      
       });
-      
+       */
     </script>
     
   </body>

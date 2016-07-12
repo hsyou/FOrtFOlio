@@ -48,9 +48,9 @@
 		          <div class="row">
 		            <div class="col-xs-8">
 		              <div class="checkbox icheck">
-		                <label>
+		                <!-- <label>
 		                  <input type="checkbox" name="useCookie"> Remember Me
-		                </label>
+		                </label> -->
 		              </div>
 		            </div><!-- /.col -->
 		            <div class="col-xs-4">
@@ -76,13 +76,13 @@
 <script src="../../plugins/iCheck/icheck.min.js"></script>
 
     <script>
-      $(function () {
+    /*   $(function () {
         $('input').iCheck({
           checkboxClass: 'icheckbox_square-blue',
           radioClass: 'iradio_square-blue',
           increaseArea: '20%' // optional
         });
-      });
+      }); */
       $("#error").css("color","red");
     </script>
     </div>
